@@ -16,6 +16,11 @@ function handleCreate(newNote){
   
 }
 
+function handleDelete(id){
+  setNoteCreate (preValues=>{
+  return preValues.filter((noteItem, index)=>{ return index !==id;})
+});}
+
 
   return (
     <div>
@@ -24,20 +29,15 @@ function handleCreate(newNote){
         addButton={handleCreate}
       />
 
-     {areaCreateArray.map((noteItem) =>{
+     {areaCreateArray.map((noteItem , index) =>{
      return <Note 
-      // key={valueInput.index}
-       title={noteItem.title}
-       content={noteItem.content}
+      key={index}
+      id ={index}
+      title={noteItem.title}
+      content={noteItem.content}
+      deleted ={handleDelete}
         /> 
      })}
-     
-
-   
-      
-
-
-   
       <Footer />
     </div>
   );
